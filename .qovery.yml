@@ -1,0 +1,11 @@
+---
+application:
+  name: "nextts"
+  project: "test"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-nextts"
+  routes:
+  - application_name: "nextts"
+    paths:
+    - "/*"
