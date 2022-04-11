@@ -1,5 +1,5 @@
 import { createContext, Dispatch, FC, SetStateAction, useState } from 'react'
-import { LaunchSpaceX } from '../../dto/launchSpaceX'
+import { LaunchSpaceX } from '../dto/launchSpaceX'
 
 interface IHomeContext {
   launches?: LaunchSpaceX[]

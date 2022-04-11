@@ -1,7 +1,7 @@
 import { useContext, VFC } from 'react'
 import { Card } from '../components'
 import { LaunchSpaceX } from '../dto/launchSpaceX'
-import { HomeContext } from './context/HomeContext'
+import { HomeContext } from '../context/HomeContext'
 
 interface SpaceLinkProps {
   mission?: string

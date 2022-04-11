@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import { Dispatch, SetStateAction, useContext, useEffect, useState, VFC } from 'react'
 import { LaunchSpaceX } from '../dto/launchSpaceX'
 import { fetchSpaceXlaunches } from '../services/api/spaceXlaunch'
-import { HomeContext, HomeProvider } from './context/HomeContext'
+import { HomeContext, HomeProvider } from '../context/HomeContext'
 import SpaceLink from './SpaceLink'
 
 export const getServerSideProps: GetServerSideProps = fetchSpaceXlaunches
