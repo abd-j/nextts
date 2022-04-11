@@ -36,14 +36,14 @@ yarn lint .
 
 Using this NextTS Boilerplate and <https://api.spacex.land/graphql/> :
 
-**Create a homepage that list the 3 last Space X Launch.**
+**Create a homepage that lists the 3 last Space X Launch.**
 
 **Each of them has a link to a detail page with those properties :**
 
  1. Mission Name
  2. Launch Date
  3. Rocket Name
- 4. An embedded videa of the launch
+ 4. An embedded video of the launch
 
 ## Requirements
 
