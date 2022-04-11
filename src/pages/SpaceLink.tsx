@@ -1,4 +1,5 @@
 import { useContext, VFC } from 'react'
+import { Card } from '../components'
 import { LaunchSpaceX } from '../dto/launchSpaceX'
 import { HomeContext } from './context/HomeContext'
 
@@ -10,17 +11,18 @@ const SpaceLinkDisplayer: VFC<{ launch: LaunchSpaceX }> = ({
   launch: { date, details, link, mission_name },
 }) => (
   <div>
-    <h2>{mission_name}</h2>
-    <h3>{date}</h3>
-    <article>
-      {link && (
-        <>
-          <span>{link.article}</span>
-          <span>{link.video}</span>
-        </>
-      )}
-    </article>
-    <section>{details}</section>
+    <Card title={mission_name}>
+      <h3>{date}</h3>
+      <article>
+        {link && (
+          <>
+            <span>{link.article}</span>
+            <span>{link.video}</span>
+          </>
+        )}
+      </article>
+      <section>{details}</section>
+    </Card>
   </div>
 )
 

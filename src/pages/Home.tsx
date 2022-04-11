@@ -1,42 +1,11 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { Dispatch, SetStateAction, useContext, useEffect, useState, VFC } from 'react'
 import { LaunchSpaceX } from '../dto/launchSpaceX'
+import { fetchSpaceXlaunches } from '../services/api/spaceXlaunch'
 import { HomeContext, HomeProvider } from './context/HomeContext'
 import SpaceLink from './SpaceLink'
 
-interface Props {
-  launch: {
-    mission: string
-    site: string
-    timestamp: number
-    rocket: string
-  }
-}
-
-const POST_HTTP_METHOD = 'POST'
-
-const query = `{
-  launchesPast(limit: 3, sort: "DESC") {
-    mission_name
-    details
-    links {
-      article_link
-      video_link
-    }
-    launch_date_unix
-  }
-}`
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('https://api.spacex.land/graphql/', {
-    method: POST_HTTP_METHOD,
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify({ query }),
-  })
-  const data: Props = await res.json()
-
-  return { props: { data } }
-}
+export const getServerSideProps: GetServerSideProps = fetchSpaceXlaunches
 
 const LinkManager: VFC<{
   launches: LaunchSpaceX[]
@@ -57,7 +26,7 @@ const LinkManager: VFC<{
   </div>
 )
 
-const HomePage = ({ data }) => {
+const HomePage: VFC<{ data: LaunchSpaceX[] }> = ({ data }) => {
   const { setLaunches } = useContext(HomeContext)
   const [selectedMission, setSelectedMission] = useState<string>()
   useEffect(() => {
@@ -73,7 +42,7 @@ const HomePage = ({ data }) => {
   )
 }
 
-const HomePageManager: NextPage<any> = ({
+const HomePageManager: NextPage<{ data: { data: { launchesPast: LaunchSpaceX[] } } }> = ({
   data: {
     data: { launchesPast },
   },
